@@ -79,9 +79,13 @@ const recommendations = {
     q22: "💡 IMPORTANT: Always purchase BIS/ISI marked fire safety equipment (IS 15683). Look for the ISI mark for quality assurance."
 };
 
+// Visitor Counter
+let visitorCount = localStorage.getItem('fireSafetyVisitors') || Math.floor(Math.random() * 2000) + 1000;
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     updateProgress();
+    updateVisitorCounter();
     
     // Add change listeners to all inputs
     const form = document.getElementById('fireSafetyForm');
@@ -97,6 +101,12 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             calculateAndShowResults();
         });
+    }
+    
+    // Initialize footer visitor count
+    const footerCounter = document.getElementById('footerVisitorCount');
+    if (footerCounter) {
+        footerCounter.textContent = formatNumber(visitorCount);
     }
 });
 
@@ -119,6 +129,41 @@ function updateProgress() {
     if (progressFill) progressFill.style.width = percentage + '%';
     if (progressPercent) progressPercent.textContent = percentage + '%';
     if (progressStats) progressStats.textContent = answered + ' of ' + totalQuestions + ' questions answered';
+}
+
+// Visitor Counter Functionality
+function updateVisitorCounter() {
+    // Increment visitor count on each page load
+    visitorCount = parseInt(visitorCount) + 1;
+    localStorage.setItem('fireSafetyVisitors', visitorCount);
+    
+    // Update all counter displays
+    const counterElements = [
+        document.getElementById('visitorCount'),
+        document.getElementById('footerVisitorCount')
+    ];
+    
+    counterElements.forEach(element => {
+        if (element) {
+            element.textContent = formatNumber(visitorCount);
+        }
+    });
+    
+    // Simulate live updates every 30 seconds
+    setInterval(() => {
+        visitorCount = parseInt(visitorCount) + Math.floor(Math.random() * 3) + 1;
+        localStorage.setItem('fireSafetyVisitors', visitorCount);
+        
+        counterElements.forEach(element => {
+            if (element) {
+                element.textContent = formatNumber(visitorCount);
+            }
+        });
+    }, 30000);
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 // Calculate score
@@ -203,7 +248,7 @@ function getSafetyLevel(percentage) {
     if (percentage >= 85) {
         return {
             level: "Excellent Safety",
-            color: "#4CAF50",
+            color: "#34bf49",
             icon: "✅",
             description: "Your building has excellent fire safety measures. Maintain regular checks and continue safety awareness."
         };
@@ -217,21 +262,21 @@ function getSafetyLevel(percentage) {
     } else if (percentage >= 50) {
         return {
             level: "Moderate Safety",
-            color: "#FFC107",
+            color: "#ff9900",
             icon: "⚠️",
             description: "Moderate fire safety. Important improvements needed. Focus on high priority recommendations."
         };
     } else if (percentage >= 30) {
         return {
             level: "Needs Improvement",
-            color: "#FF9800",
+            color: "#ff9900",
             icon: "🔔",
             description: "Significant fire safety improvements required. Address critical issues immediately."
         };
     } else {
         return {
             level: "High Risk",
-            color: "#F44336",
+            color: "#ff4c4c",
             icon: "🚨",
             description: "Immediate action required to address critical fire safety issues. Safety should be top priority."
         };
@@ -260,6 +305,209 @@ function calculateAndShowResults() {
     
     // Redirect to report page
     window.location.href = 'report.html';
+}
+
+// Enhanced PDF Download Function
+function downloadPDF() {
+    const results = JSON.parse(sessionStorage.getItem('fireSafetyResults'));
+    
+    if (!results) {
+        alert('Please complete the assessment first.');
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    // Create a printable version
+    const printWindow = window.open('', '_blank');
+    const reportDate = new Date().toLocaleDateString('en-IN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    
+    const criticalRisks = results.riskAreas.filter(r => r.recommendation.includes('🚨 CRITICAL') || r.recommendation.includes('🚨 HIGH PRIORITY'));
+    const highRisks = results.riskAreas.filter(r => r.recommendation.includes('🚨 HIGH PRIORITY') && !r.recommendation.includes('🚨 CRITICAL'));
+    const mediumRisks = results.riskAreas.filter(r => !r.recommendation.includes('🚨 CRITICAL') && !r.recommendation.includes('🚨 HIGH PRIORITY'));
+    
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Fire Safety Assessment Report - ${reportDate}</title>
+            <style>
+                body { 
+                    font-family: 'Segoe UI', Arial, sans-serif; 
+                    margin: 40px; 
+                    color: #000000; 
+                    background: white;
+                    line-height: 1.6;
+                }
+                .header { 
+                    text-align: center; 
+                    margin-bottom: 40px; 
+                    border-bottom: 3px solid #ff4c4c; 
+                    padding-bottom: 20px; 
+                }
+                h1 { 
+                    color: #ff4c4c; 
+                    margin-bottom: 10px;
+                    font-size: 28px;
+                }
+                .score-section { 
+                    margin: 30px 0; 
+                    padding: 25px; 
+                    background: #f0f4f8; 
+                    border-radius: 10px; 
+                    border: 2px solid #0099e5;
+                }
+                .score-circle { 
+                    width: 120px; 
+                    height: 120px; 
+                    border-radius: 50%; 
+                    background: #ff4c4c; 
+                    color: white; 
+                    display: flex; 
+                    flex-direction: column; 
+                    justify-content: center; 
+                    align-items: center; 
+                    margin: 0 auto 20px; 
+                }
+                .score-value { 
+                    font-size: 2.5rem; 
+                    font-weight: bold; 
+                }
+                .recommendations-grid {
+                    display: grid;
+                    gap: 20px;
+                    margin: 30px 0;
+                }
+                .priority-section {
+                    margin: 20px 0;
+                    padding: 20px;
+                    border-radius: 8px;
+                }
+                .critical { background: #ffebee; border-left: 4px solid #ff4c4c; }
+                .high { background: #fff3e0; border-left: 4px solid #ff9900; }
+                .medium { background: #e8f5e9; border-left: 4px solid #34bf49; }
+                .priority-title {
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .recommendation-item {
+                    margin: 10px 0;
+                    padding: 10px;
+                    background: white;
+                    border-radius: 5px;
+                    border: 1px solid #e0e0e0;
+                }
+                .footer { 
+                    margin-top: 40px; 
+                    padding-top: 20px; 
+                    border-top: 2px solid #ccc; 
+                    font-size: 12px; 
+                    color: #666;
+                    text-align: center;
+                }
+                .contact-info {
+                    background: #e3f2fd;
+                    padding: 15px;
+                    border-radius: 5px;
+                    margin: 20px 0;
+                }
+                @media print { 
+                    body { 
+                        font-size: 12pt; 
+                        margin: 20px;
+                    }
+                    .score-circle {
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Fire Safety Assessment Report</h1>
+                <p><strong>Generated on:</strong> ${reportDate}</p>
+                <p><strong>Safety Score:</strong> ${results.score}% - ${results.safetyLevel.level}</p>
+            </div>
+            
+            <div class="score-section">
+                <h2>Assessment Summary</h2>
+                <div class="score-circle">
+                    <span class="score-value">${results.score}%</span>
+                    <span>Safety Score</span>
+                </div>
+                <p><strong>Safety Level:</strong> ${results.safetyLevel.level}</p>
+                <p><strong>Safety Description:</strong> ${results.safetyLevel.description}</p>
+                <p><strong>Total Recommendations:</strong> ${results.riskAreas.length} areas need improvement</p>
+                <p><strong>Questions Answered:</strong> ${results.answered}/22</p>
+            </div>
+            
+            <h2>Safety Recommendations</h2>
+            
+            ${criticalRisks.length > 0 ? `
+            <div class="priority-section critical">
+                <div class="priority-title">🚨 Critical Priorities (${criticalRisks.length})</div>
+                ${criticalRisks.map(risk => `
+                    <div class="recommendation-item">
+                        ${risk.recommendation}
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            ${highRisks.length > 0 ? `
+            <div class="priority-section high">
+                <div class="priority-title">⚠️ High Priorities (${highRisks.length})</div>
+                ${highRisks.map(risk => `
+                    <div class="recommendation-item">
+                        ${risk.recommendation}
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            ${mediumRisks.length > 0 ? `
+            <div class="priority-section medium">
+                <div class="priority-title">💡 Medium Priorities (${mediumRisks.length})</div>
+                ${mediumRisks.map(risk => `
+                    <div class="recommendation-item">
+                        ${risk.recommendation}
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+            
+            <div class="contact-info">
+                <h3>Need Professional Help?</h3>
+                <p><strong>Amjath Khan - Fire & Life Safety Consultant</strong></p>
+                <p>📞 Phone: +91-9750816163</p>
+                <p>📧 Email: contact@amjathkhan.com</p>
+                <p>🌐 Website: www.amjathkhan.com</p>
+            </div>
+            
+            <div class="footer">
+                <p>© ${new Date().getFullYear()} Fire Safety Assessment Tool | Based on BIS Standards IS 2190</p>
+                <p>For professional fire safety audits, contact: Amjath Khan - +91-9750816163</p>
+                <p><strong>Disclaimer:</strong> This is a self-assessment tool only. It does not replace professional fire safety audits or compliance certifications. Always consult with certified fire safety professionals for official assessments.</p>
+                <p>Report generated from: https://firesafetyassessmenttool.vercel.app</p>
+            </div>
+        </body>
+        </html>
+    `);
+    
+    printWindow.document.close();
+    setTimeout(() => {
+        printWindow.print();
+        setTimeout(() => {
+            printWindow.close();
+        }, 500);
+    }, 1000);
 }
 
 // Utility function for Amazon tracking
