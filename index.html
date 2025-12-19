@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fire Safety Assessment Tool | Residential Fire Safety Survey</title>
-    <meta name="description" content="Free 4-minute fire safety assessment for residential buildings. Based on BIS standards IS 2190. Get your safety score instantly.">
+    <title>Fire Safety Tools | Professional Fire Safety Calculators & Resources</title>
+    <meta name="description" content="Free professional fire safety calculators, tools, and resources. HSE tools, fire extinguisher calculators, safety assessment tools, and utility tools for safety professionals.">
+    <meta name="keywords" content="fire safety tools, hse calculators, fire extinguisher calculator, fire safety assessment, safety tools, fire protection">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Amjath Khan">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Fire Safety Tools | Professional Calculators & Resources">
+    <meta property="og:description" content="Free professional fire safety calculators and tools">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.firesafetytools.online">
+    
     <link rel="stylesheet" href="style.css">
     
-    <!-- Google AdSense Auto Ads -->
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6687860250561653" crossorigin="anonymous"></script>
     
     <!-- Google Analytics -->
@@ -18,754 +28,738 @@
         gtag('js', new Date());
         gtag('config', 'G-376208036');
     </script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Additional Styles for Sidebar Layout */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: var(--bg-dark);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+        }
+        
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-header p {
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        .tools-category {
+            margin: 25px 0;
+            padding: 0 20px;
+        }
+        
+        .category-title {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(0, 153, 229, 0.3);
+        }
+        
+        .tool-nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: #e9ecef;
+            text-decoration: none;
+            border-radius: var(--radius);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .tool-nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: var(--accent);
+        }
+        
+        .tool-nav-item.active {
+            background: rgba(255, 76, 76, 0.1);
+            color: var(--primary-light);
+            border-left-color: var(--primary);
+        }
+        
+        .tool-icon {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .tool-name {
+            flex: 1;
+            font-weight: 500;
+        }
+        
+        .new-badge {
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 20px;
+            background: var(--bg-light);
+        }
+        
+        .content-header {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tool-viewer {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            min-height: 500px;
+        }
+        
+        .tool-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .tool-info {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+        }
+        
+        .tool-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .tool-description {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .tool-features {
+            background: var(--bg-lighter);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin: 20px 0;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .feature-icon {
+            color: var(--secondary);
+        }
+        
+        .visitor-counter {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-link {
+            color: #adb5bd;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--secondary);
+        }
+        
+        /* Print Styles */
+        @media print {
+            .sidebar, .content-header, .social-links, .mobile-menu-btn {
+                display: none !important;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 0;
+            }
+            
+            .tool-viewer {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                width: 100%;
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .tool-iframe {
+                height: 400px;
+            }
+        }
+        
+        /* Visitor Counter */
+        .counter-number {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            background: rgba(0,0,0,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-top">
-                <div class="logo-section">
-                    <h1>🔥 Fire Safety Assessment Tool</h1>
-                    <p class="tagline">Call for Participation: Residential Fire Safety Survey</p>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-fire"></i> Fire Safety Tools</h2>
+                <p>Professional Calculators & Resources</p>
+                
+                <div class="visitor-counter" id="visitorCounter">
+                    <i class="fas fa-eye"></i>
+                    <span>Visitors: </span>
+                    <span class="counter-number" id="counterNumber">0</span>
                 </div>
-                <a href="https://buymeacoffee.com/s.amjathkhan" target="_blank" class="coffee-btn" onclick="trackCoffeeClick()">
-                    <span>☕</span>
-                    <span>Support This Project</span>
+            </div>
+            
+            <!-- HSE Tools -->
+            <div class="tools-category">
+                <div class="category-title"><i class="fas fa-shield-alt"></i> ⚕️ HSE Tools</div>
+                <a href="#hse-calculators" class="tool-nav-item active" data-tool="hse-calculators">
+                    <span class="tool-icon"><i class="fas fa-calculator"></i></span>
+                    <span class="tool-name">HSE Calculators</span>
+                </a>
+                <a href="#hse-toolkit" class="tool-nav-item" data-tool="hse-toolkit">
+                    <span class="tool-icon"><i class="fas fa-toolbox"></i></span>
+                    <span class="tool-name">HSE Toolkit</span>
                 </a>
             </div>
-        </div>
-    </header>
-
-    <!-- Amazon Banner -->
-    <div class="amazon-banner">
-        <div class="container">
-            <a href="https://amzn.to/4p8ceG6" target="_blank" class="amazon-link" onclick="trackAmazonClick()">
-                <div class="banner-content">
-                    <span class="banner-badge">🔥 Fire Safety Store</span>
-                    <span class="banner-text">Clearance Sale - Up to 70% OFF All Day</span>
-                    <span class="banner-cta">Shop Now →</span>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Introduction -->
-        <section class="intro-section">
-            <div class="intro-card">
-                <h2>Hello! Thank you for your interest</h2>
-                <p>This is a <strong>4-minute questionnaire</strong> designed to understand the current state of fire preparedness in existing Residential Buildings across India.</p>
-                
-                <div class="objective-box">
-                    <h3>📋 Survey Objective</h3>
-                    <p>This survey is a preliminary assessment designed to understand the current state of <strong>fire preparedness and fighting abilities</strong> in existing Residential Buildings. The ultimate goal is to <strong>promote the use of essential first-aid/portable fire extinguishers</strong> in these buildings.</p>
-                </div>
-
-                <div class="privacy-box">
-                    <h3>🔒 Your Privacy is Protected</h3>
-                    <ul>
-                        <li><strong>Absolutely no personal data</strong> (name, age, contact, address, email) is required</li>
-                        <li>Your replies help in enhancing residential building safety awareness</li>
-                        <li><strong>Please fill out this form only ONCE</strong></li>
-                    </ul>
-                </div>
+            
+            <!-- Fire Safety Tools -->
+            <div class="tools-category">
+                <div class="category-title"><i class="fas fa-fire-extinguisher"></i> 🔥 Fire Safety Tools</div>
+                <a href="#fire-safety-calculators" class="tool-nav-item" data-tool="fire-safety-calculators">
+                    <span class="tool-icon"><i class="fas fa-calculator"></i></span>
+                    <span class="tool-name">Fire Safety Calculators</span>
+                </a>
+                <a href="#ceiling-mounted" class="tool-nav-item" data-tool="ceiling-mounted">
+                    <span class="tool-icon"><i class="fas fa-arrow-up"></i></span>
+                    <span class="tool-name">Ceiling Mounted Calculator</span>
+                </a>
+                <a href="#fire-extinguisher-audit" class="tool-nav-item" data-tool="fire-extinguisher-audit">
+                    <span class="tool-icon"><i class="fas fa-clipboard-check"></i></span>
+                    <span class="tool-name">Fire Extinguisher Audit</span>
+                </a>
+                <a href="#safety-assessment" class="tool-nav-item" data-tool="safety-assessment">
+                    <span class="tool-icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span class="tool-name">Safety Assessment</span>
+                </a>
+                <a href="#extinguisher-estimation" class="tool-nav-item" data-tool="extinguisher-estimation">
+                    <span class="tool-icon"><i class="fas fa-calculator"></i></span>
+                    <span class="tool-name">Extinguisher Estimator</span>
+                </a>
+                <a href="#kitchen-suppression" class="tool-nav-item" data-tool="kitchen-suppression">
+                    <span class="tool-icon"><i class="fas fa-utensils"></i></span>
+                    <span class="tool-name">Kitchen Suppression</span>
+                </a>
+                <a href="#room-flooding" class="tool-nav-item" data-tool="room-flooding">
+                    <span class="tool-icon"><i class="fas fa-flood"></i></span>
+                    <span class="tool-name">Room Flooding System</span>
+                </a>
+                <a href="#panel-suppression" class="tool-nav-item" data-tool="panel-suppression">
+                    <span class="tool-icon"><i class="fas fa-server"></i></span>
+                    <span class="tool-name">Panel Suppression</span>
+                </a>
             </div>
-        </section>
-
-        <!-- Tools Section -->
-        <section class="tools-section">
-            <div class="tools-card">
-                <h3>🔧 Explore More Calculators & Tools</h3>
-                <p class="tools-intro">We highly recommend these expert resources for specialized safety and utility tools:</p>
-                
-                <div class="tools-grid">
-                    <a href="https://www.firesafetytool.com" target="_blank" class="tool-card">
-                        <div class="tool-icon">🔥</div>
-                        <h4>Fire Safety Tool</h4>
-                        <p>Comprehensive fire safety calculators, risk assessments, and compliance tools for professionals and building owners.</p>
-                        <span class="tool-link">Visit Tool →</span>
-                    </a>
-                    
-                    <a href="https://www.hsecalculator.com" target="_blank" class="tool-card">
-                        <div class="tool-icon">🛡️</div>
-                        <h4>HSE Calculator</h4>
-                        <p>Health, Safety & Environment calculators for workplace safety compliance, risk assessments, and regulatory tools.</p>
-                        <span class="tool-link">Visit Tool →</span>
-                    </a>
-                    
-                    <a href="https://www.webtoolsdaily.com" target="_blank" class="tool-card">
-                        <div class="tool-icon">🌐</div>
-                        <h4>Web Tools Daily</h4>
-                        <p>Daily updated collection of web tools, calculators, converters, and utilities for developers and general users.</p>
-                        <span class="tool-link">Visit Tool →</span>
-                    </a>
-                </div>
+            
+            <!-- Utility Tools -->
+            <div class="tools-category">
+                <div class="category-title"><i class="fas fa-tools"></i> 🌐 Utility Tools</div>
+                <a href="#utility-tools" class="tool-nav-item" data-tool="utility-tools">
+                    <span class="tool-icon"><i class="fas fa-wrench"></i></span>
+                    <span class="tool-name">Utility Tools</span>
+                </a>
+                <a href="#web-tools" class="tool-nav-item" data-tool="web-tools">
+                    <span class="tool-icon"><i class="fas fa-globe"></i></span>
+                    <span class="tool-name">Web Tools Daily</span>
+                </a>
             </div>
-        </section>
-
-        <!-- Contact Expert -->
-        <section class="expert-section">
-            <div class="expert-card">
-                <h3>👨‍🚒 Connect with a Safety Expert</h3>
-                <p>If you have follow-up inquiries or wish to arrange a detailed safety audit for your Home, Building, or Office:</p>
-                
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <h4>Amjath Khan</h4>
-                        <p class="role">Fire & Life Safety Consultant</p>
-                        <div class="contact-details">
-                            <p><strong>Phone:</strong> +91-9750816163</p>
-                            <p><strong>Email:</strong> samajthkhan.official@gmail.com</p>
-                        </div>
-                        <a href="https://www.safetyguide360.com" target="_blank" class="website-link">
-                            🌐 Visit: www.safetyguide360.com
+            
+            <!-- Contact Section in Sidebar -->
+            <div class="tools-category">
+                <div class="category-title"><i class="fas fa-envelope"></i> Contact</div>
+                <div style="padding: 15px; color: #adb5bd; font-size: 0.9rem;">
+                    <p><strong>Email:</strong> contact@amjathkhan.com</p>
+                    <p><strong>Phone:</strong> +91-9750816163</p>
+                    <p><strong>Website:</strong> amjathkhan.com</p>
+                    
+                    <div class="social-links">
+                        <a href="https://bsky.app/profile/amjathkhan.bsky.social" class="social-link" target="_blank">
+                            <i class="fab fa-bluesky"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Amjathkhan.s" class="social-link" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/amjathkhan_official/" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/amjikhan" class="social-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/amjathkhan-shiekusman/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Main Form -->
-        <form id="fireSafetyForm" class="assessment-form">
-            <div class="form-header">
-                <h2>Residential Fire Safety Assessment</h2>
-                <p class="required-note">* Indicates required question</p>
-            </div>
-
-            <!-- Section 1: Building Details -->
-            <section class="form-section">
-                <h3 class="section-title">🏢 Building Information</h3>
-                
-                <!-- Number of floors -->
-                <div class="question-block required">
-                    <label class="question-label">How many floors are there in your residential building? *</label>
-                    <div class="options-grid">
-                        <label class="radio-option">
-                            <input type="radio" name="q1" value="2" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Two or less number of floors</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q1" value="3-4">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">3 to 4 floors</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q1" value="5-10">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">5 to 10 floors</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q1" value="11+">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">11 or more floors</span>
-                        </label>
-                    </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 id="currentToolTitle">HSE Calculators</h1>
+                    <p id="currentToolDesc">Professional Health, Safety & Environment calculators</p>
                 </div>
-
-                <!-- Number of families -->
-                <div class="question-block required">
-                    <label class="question-label">How many families are living or can live in that residential building (on all floors)? *</label>
-                    <div class="options-grid">
-                        <label class="radio-option">
-                            <input type="radio" name="q2" value="1-5" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">1-5 families</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q2" value="6-10">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">6-10 families</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q2" value="11-20">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">11-20 families</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q2" value="21-50">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">21-50 families</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q2" value="51+">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">More than 50 families</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Floor number -->
-                <div class="question-block required">
-                    <label class="question-label">In which floor do you reside? [Pick a number (0 for Ground Floor; 1 for First Floor; 2 for Second Floor; and so on)] *</label>
-                    <div class="input-group">
-                        <input type="number" name="q3" min="0" max="50" placeholder="Enter floor number (e.g., 0, 1, 2...)" required class="number-input">
-                        <div class="input-hint">0 = Ground Floor, 1 = First Floor, 2 = Second Floor, etc.</div>
-                    </div>
-                </div>
-
-                <!-- Building age -->
-                <div class="question-block required">
-                    <label class="question-label">What is the age of your residential building? *</label>
-                    <div class="options-grid">
-                        <label class="radio-option">
-                            <input type="radio" name="q11" value="<4" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Less than 4 years</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q11" value="5-10">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">5 to 10 years</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q11" value="11-20">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">11 to 20 years</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q11" value="20+">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">More than 20 years</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Distance to fire station -->
-                <div class="question-block required">
-                    <label class="question-label">Roughly, how far is the nearest Fire Station from your residence (who responds when 101 is dialed)? *</label>
-                    <div class="options-grid">
-                        <label class="radio-option">
-                            <input type="radio" name="q12" value="<5" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Less than 5 km</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q12" value="6-10">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">6 to 10 km</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q12" value="11-15">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">11 to 15 km</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q12" value="16+">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">16 km or beyond</span>
-                        </label>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 2: Fire Safety Equipment -->
-            <section class="form-section">
-                <h3 class="section-title">🚒 Fire Safety Equipment</h3>
-                
-                <!-- Fire extinguisher in residence -->
-                <div class="question-block required">
-                    <label class="question-label">Is there any fire extinguisher within your residence (for exclusive use in your house)? *</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Fire Extinguisher</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q4" value="yes" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q4" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Fire extinguisher in common area -->
-                <div class="question-block">
-                    <label class="question-label">Is there a fire extinguisher in the corridor/lift lobby/near the entrance of your house/flat?</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Fire extinguisher in the corridor</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q5" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q5" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Fire sprinkler -->
-                <div class="question-block">
-                    <label class="question-label">Is there a fire sprinkler installed in at least one room within your house/flat?</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Fire Sprinkler</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q6" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q6" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Smoke detector -->
-                <div class="question-block">
-                    <label class="question-label">Is there a fire detector OR smoke detector installed in at least one room of your house/flat?</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Smoke Detector</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q7" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q7" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Fire extinguisher in parking -->
-                <div class="question-block">
-                    <label class="question-label">Is there any fire extinguisher in the car parking area? (Select "Not Applicable" if open air car parking)</label>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q17" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q17" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q17" value="na">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Not Applicable</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Manual call point -->
-                <div class="question-block">
-                    <label class="question-label">Is there a manual call point (BREAK GLASS / PULL DOWN) in the floor of your residence?</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Manual Call Point</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q19" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q19" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Fire blanket -->
-                <div class="question-block required">
-                    <label class="question-label">Do you have a Fire Blanket in the kitchen of your residence? *</label>
-                    <div class="image-hint">
-                        <div class="hint-text">FIRE BLANKET - STOP DROP and ROLL</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q20" value="yes" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q20" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Fire hydrant -->
-                <div class="question-block">
-                    <label class="question-label">Is there a Fire Hydrant system in your residential building (inside OR outside)?</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Fire Hydrant System</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q21" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q21" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 3: Building Features -->
-            <section class="form-section">
-                <h3 class="section-title">🏠 Building Features</h3>
-                
-                <!-- Car parking -->
-                <div class="question-block">
-                    <label class="question-label">Is Car Parking available in any floor (stilt OR ground OR basement) within your building?</label>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q16" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q16" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q16" value="na">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Not Applicable</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Balcony -->
-                <div class="question-block">
-                    <label class="question-label">Is there a balcony in your residence? (only ground floor residents may opt "Not Applicable")</label>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q14" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q14" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q14" value="na">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Not Applicable</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Escape routes -->
-                <div class="question-block required">
-                    <label class="question-label">How many Escape Routes/Staircases/Doors are available to get out from your residence in case of emergency? *</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Fire Emergency Exit</div>
-                    </div>
-                    <div class="options-grid">
-                        <label class="radio-option">
-                            <input type="radio" name="q15" value="1" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">1</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q15" value="2">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">2</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q15" value="3">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">3</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q15" value="4">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">4</span>
-                        </label>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 4: Safety Experience -->
-            <section class="form-section">
-                <h3 class="section-title">📊 Safety Experience</h3>
-                
-                <!-- Used extinguisher -->
-                <div class="question-block">
-                    <label class="question-label">Did you (or your family member) ever happen to use the fire extinguisher in your house/residence?</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Fire Extinguisher Use</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q8" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q8" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Neighbor used extinguisher -->
-                <div class="question-block">
-                    <label class="question-label">Did you ever notice/come to know if your neighbor used a fire extinguisher in his/her house OR by staff in any other building of your housing complex?</label>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q9" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q9" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Firemen visit -->
-                <div class="question-block">
-                    <label class="question-label">Was there any visit by firemen/fire engine within the last 10 years in your residential building/in any building within your housing complex?</label>
-                    <div class="image-hint">
-                        <div class="hint-text">Fire Engine</div>
-                    </div>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q10" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q10" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Fire drill -->
-                <div class="question-block">
-                    <label class="question-label">Whether any Fire Drill was conducted in your residential building, in the last 5 years?</label>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q13" value="yes">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q13" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 5: Safety Awareness -->
-            <section class="form-section">
-                <h3 class="section-title">🎓 Safety Awareness</h3>
-                
-                <!-- Workplace extinguisher -->
-                <div class="question-block required">
-                    <label class="question-label">Is there a fire extinguisher in the building where you Work or Study? *</label>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q18" value="yes" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q18" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- ISI awareness -->
-                <div class="question-block required">
-                    <label class="question-label">Are you aware that ISI marked Fire Extinguishers all type (As per IS 15683) are available for purchase and use in residences? *</label>
-                    <div class="options-row">
-                        <label class="radio-option">
-                            <input type="radio" name="q22" value="yes" required>
-                            <span class="radio-btn"></span>
-                            <span class="option-text">Yes</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="q22" value="no">
-                            <span class="radio-btn"></span>
-                            <span class="option-text">No</span>
-                        </label>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Progress Bar -->
-            <div class="progress-section">
-                <div class="progress-info">
-                    <span class="progress-label">Survey Progress</span>
-                    <span class="progress-percent" id="progressPercent">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
-                </div>
-                <div class="progress-stats" id="progressStats">0 of 22 questions answered</div>
-            </div>
-
-            <!-- Submit Section -->
-            <div class="submit-section">
-                <button type="submit" class="submit-btn">
-                    <span class="btn-text">Get Your Fire Safety Score</span>
-                    <span class="btn-icon">🚒</span>
-                </button>
-                
-                <div class="submit-info">
-                    <div class="info-item">
-                        <span class="info-icon">⏱️</span>
-                        <span>Takes only 4 minutes</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🔒</span>
-                        <span>100% anonymous</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">📊</span>
-                        <span>Instant results</span>
-                    </div>
-                </div>
-                
-                <p class="privacy-note">
-                    <em>This content is neither created nor endorsed by Google.</em><br>
-                    Based on Indian Standard IS 2190 for selection, installation and maintenance of first-aid fire extinguishers.
-                </p>
-            </div>
-        </form>
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>Essential Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://www.safetyguide360.com" target="_blank">Safety Guide 360</a></li>
-                        <li><a href="https://www.manakonline.in" target="_blank">BIS ManakOnline</a></li>
-                        <li><a href="privacy.html" target="_blank">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Fire Safety Store</h3>
-                    <a href="https://amzn.to/4p8ceG6" target="_blank" class="store-link" onclick="trackAmazonClick()">
-                        🔥 Shop Safety Equipment
-                    </a>
-                    <p class="store-discount">Up to 70% OFF</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>More Tools</h3>
-                    <div class="tools-links">
-                        <a href="https://www.firesafetytool.com" target="_blank" class="tool-link">🔥 Fire Safety Tool</a>
-                        <a href="https://www.hsecalculator.com" target="_blank" class="tool-link">🛡️ HSE Calculator</a>
-                        <a href="https://www.webtoolsdaily.com" target="_blank" class="tool-link">🌐 Web Tools Daily</a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Support & Contact</h3>
-                    <a href="https://buymeacoffee.com/s.amjathkhan" target="_blank" class="support-link" onclick="trackCoffeeClick()">
-                        ☕ Buy Me a Coffee
-                    </a>
-                    <div class="contact-footer">
-                        <p><strong>Amjath Khan</strong></p>
-                        <p>Fire & Life Safety Consultant</p>
-                        <p>📞 +91-9750816163</p>
-                    </div>
+                <div>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i> Menu
+                    </button>
+                    <button onclick="printTool()" class="action-btn" style="background: var(--secondary); color: white; padding: 10px 20px; border-radius: var(--radius); border: none; cursor: pointer; margin-left: 10px;">
+                        <i class="fas fa-print"></i> Print
+                    </button>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>© 2024 Fire Safety Assessment Tool | Based on BIS Standards IS 2190</p>
-                <p class="disclaimer-text">Disclaimer: This tool provides guidance only and does not replace professional fire safety assessment.</p>
+            <div class="tool-viewer" id="toolViewer">
+                <div class="tool-info" id="toolInfo">
+                    <h2 class="tool-title" id="toolTitle">HSE Calculators</h2>
+                    <p class="tool-description" id="toolDescription">
+                        Comprehensive collection of Health, Safety & Environment calculators for workplace safety compliance, 
+                        risk assessments, and regulatory tools. Perfect for HSE professionals, safety officers, and facility managers.
+                    </p>
+                    
+                    <div class="tool-features">
+                        <h3><i class="fas fa-star"></i> Features:</h3>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                <span>Risk Assessment Calculators</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                <span>Compliance Monitoring Tools</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                <span>Incident Rate Calculators</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                <span>Safety Performance Metrics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-iframe-container">
+                    <iframe 
+                        src="https://www.hsecalculator.com/" 
+                        class="tool-iframe" 
+                        id="toolIframe"
+                        title="HSE Calculator Tool"
+                        allow="fullscreen"
+                    ></iframe>
+                </div>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <p style="color: var(--text-light); font-size: 0.9rem;">
+                        <i class="fas fa-info-circle"></i> 
+                        Note: Some tools may take a few seconds to load. If you encounter any issues, try refreshing the page.
+                    </p>
+                </div>
             </div>
-        </div>
-    </footer>
+            
+            <!-- Feedback Section -->
+            <div class="feedback-section" style="margin-top: 40px; background: white; padding: 25px; border-radius: var(--radius-lg); box-shadow: var(--shadow);">
+                <h3 style="color: var(--primary); margin-bottom: 20px;">
+                    <i class="fas fa-comment-dots"></i> Feedback & Support
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: var(--secondary); margin-bottom: 10px;">Having Issues?</h4>
+                        <p style="color: var(--text-medium); margin-bottom: 15px;">
+                            If any tool is not working properly or you have suggestions for improvement, please contact us:
+                        </p>
+                        <ul style="color: var(--text-medium); padding-left: 20px;">
+                            <li>Email: contact@amjathkhan.com</li>
+                            <li>Phone: +91-9750816163</li>
+                            <li>Website: <a href="https://www.amjathkhan.com" target="_blank" style="color: var(--secondary);">amjathkhan.com</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--accent); margin-bottom: 10px;">Tool Request</h4>
+                        <p style="color: var(--text-medium);">
+                            Need a specific fire safety or HSE tool? Let us know! We're constantly adding new tools based on user requests.
+                        </p>
+                        <a href="mailto:contact@amjathkhan.com?subject=New Tool Request - Fire Safety Tools" 
+                           style="display: inline-block; margin-top: 15px; background: var(--accent); color: white; padding: 10px 20px; border-radius: var(--radius); text-decoration: none;">
+                            <i class="fas fa-plus-circle"></i> Request New Tool
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
     <script>
-        function trackAmazonClick() {
-            gtag('event', 'amazon_click', {
-                'event_category': 'affiliate',
-                'event_label': 'fire_safety_store'
-            });
-        }
-        
-        function trackCoffeeClick() {
-            gtag('event', 'coffee_click', {
-                'event_category': 'support',
-                'event_label': 'buy_me_coffee'
-            });
-        }
-        
-        function trackToolClick(toolName) {
-            gtag('event', 'tool_click', {
-                'event_category': 'tools',
-                'event_label': toolName
-            });
-        }
-        
-        // Add event listeners for tracking
+        // Tool Configuration
+        const tools = {
+            'hse-calculators': {
+                title: 'HSE Calculators',
+                description: 'Professional Health, Safety & Environment calculators for workplace safety compliance',
+                url: 'https://www.hsecalculator.com/',
+                features: ['Risk Assessment', 'Compliance Tools', 'Incident Rate Calculators', 'Safety Metrics']
+            },
+            'hse-toolkit': {
+                title: 'HSE Toolkit',
+                description: 'Comprehensive HSE tools and resources for safety professionals',
+                url: 'https://hse-toolkit.vercel.app/',
+                features: ['Tool Collection', 'Resources', 'Templates', 'Guidelines']
+            },
+            'fire-safety-calculators': {
+                title: 'Fire Safety Calculators',
+                description: 'Comprehensive fire safety calculators and risk assessment tools',
+                url: 'https://www.firesafetytool.com/',
+                features: ['Fire Risk Assessment', 'Extinguisher Sizing', 'System Design', 'Compliance Check']
+            },
+            'ceiling-mounted': {
+                title: 'Ceiling Mounted Fire Extinguisher Calculator',
+                description: 'Calculate requirements for ceiling mounted fire extinguisher systems',
+                url: 'https://safetyguide360-ceilingmounted-firee.vercel.app/',
+                features: ['Ceiling Mount Calculations', 'Placement Optimization', 'Coverage Analysis']
+            },
+            'fire-extinguisher-audit': {
+                title: 'Fire Extinguisher Health Checkup Audit Tool',
+                description: 'Professional audit tool for fire extinguisher maintenance and compliance',
+                url: 'https://fire-extinguisher-audit-tool.vercel.app/',
+                features: ['Audit Checklist', 'Compliance Verification', 'Maintenance Tracking', 'Report Generation']
+            },
+            'safety-assessment': {
+                title: 'Fire Safety Assessment Tool',
+                description: 'Complete fire safety assessment for residential and commercial buildings',
+                url: 'https://firesafetyassessmenttool.vercel.app/',
+                features: ['Risk Assessment', 'Safety Score', 'Action Plan', 'PDF Report']
+            },
+            'extinguisher-estimation': {
+                title: 'Fire Extinguisher Estimation Tool',
+                description: 'Calculate fire extinguisher requirements for any space',
+                url: 'https://fire-extinguisher-calculator.vercel.app/',
+                features: ['Quantity Estimation', 'Type Selection', 'Placement Guide', 'Compliance Check']
+            },
+            'kitchen-suppression': {
+                title: 'Kitchen Suppression System Calculator',
+                description: 'Design and calculate kitchen fire suppression systems',
+                url: 'https://kitchen-fire-suppression-calculator.vercel.app/',
+                features: ['Kitchen Hazard Analysis', 'System Sizing', 'Nozzle Placement', 'Flow Calculation']
+            },
+            'room-flooding': {
+                title: 'Room Flooding System Calculator',
+                description: 'FM-200 and other clean agent system calculations',
+                url: 'https://fm-200-room-flooding-system-calcula.vercel.app/',
+                features: ['Clean Agent Calculation', 'Room Volume Analysis', 'System Design', 'Discharge Time']
+            },
+            'panel-suppression': {
+                title: 'Panel Fire Suppression Calculator',
+                description: 'Electrical panel and server room fire suppression system design',
+                url: 'https://panel-fire-suppression-calculator.vercel.app/index.html',
+                features: ['Panel Protection', 'System Sizing', 'Agent Selection', 'Installation Guide']
+            },
+            'utility-tools': {
+                title: 'Utility Tools',
+                description: 'Daily utility tools and calculators for various needs',
+                url: 'https://www.dailysmarttool.com/',
+                features: ['Daily Tools', 'Calculators', 'Converters', 'Utilities']
+            },
+            'web-tools': {
+                title: 'Web Tools Daily',
+                description: 'Daily updated collection of web tools and utilities',
+                url: 'https://www.webtoolsdaily.com/',
+                features: ['Web Tools', 'Developer Resources', 'Online Utilities', 'Daily Updates']
+            }
+        };
+
+        // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Coffee button
-            const coffeeBtn = document.querySelector('.coffee-btn');
-            const supportLink = document.querySelector('.support-link');
+            // Set active tool
+            const defaultTool = 'hse-calculators';
+            loadTool(defaultTool);
             
-            if (coffeeBtn) coffeeBtn.addEventListener('click', trackCoffeeClick);
-            if (supportLink) supportLink.addEventListener('click', trackCoffeeClick);
-            
-            // Tool links
-            const toolCards = document.querySelectorAll('.tool-card');
-            toolCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const toolName = this.querySelector('h4').textContent;
-                    trackToolClick(toolName);
+            // Add click handlers to nav items
+            document.querySelectorAll('.tool-nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const toolId = this.getAttribute('data-tool');
+                    
+                    // Update active state
+                    document.querySelectorAll('.tool-nav-item').forEach(i => {
+                        i.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Load tool
+                    loadTool(toolId);
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 992) {
+                        document.getElementById('sidebar').classList.remove('open');
+                    }
                 });
             });
             
-            // Tool links in footer
-            const toolLinks = document.querySelectorAll('.tool-link');
-            toolLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    const toolName = this.textContent.replace(/[🔥🛡️🌐]\s*/, '');
-                    trackToolClick(toolName);
-                });
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('sidebar').classList.toggle('open');
             });
+            
+            // Initialize visitor counter
+            initializeVisitorCounter();
+            
+            // Track page view
+            trackPageView();
+        });
+
+        // Load tool function
+        function loadTool(toolId) {
+            const tool = tools[toolId];
+            if (!tool) return;
+            
+            // Update UI
+            document.getElementById('currentToolTitle').textContent = tool.title;
+            document.getElementById('currentToolDesc').textContent = tool.description;
+            document.getElementById('toolTitle').textContent = tool.title;
+            document.getElementById('toolDescription').textContent = tool.description;
+            
+            // Update iframe
+            const iframe = document.getElementById('toolIframe');
+            iframe.src = tool.url;
+            
+            // Update features
+            updateFeatures(tool.features);
+            
+            // Update URL without reload
+            history.pushState(null, '', `#${toolId}`);
+            
+            // Track tool view
+            trackToolView(toolId, tool.title);
+        }
+
+        // Update features list
+        function updateFeatures(features) {
+            const featuresContainer = document.querySelector('.feature-list');
+            if (!featuresContainer) return;
+            
+            featuresContainer.innerHTML = features.map(feature => `
+                <div class="feature-item">
+                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                    <span>${feature}</span>
+                </div>
+            `).join('');
+        }
+
+        // Print function
+        function printTool() {
+            const iframe = document.getElementById('toolIframe');
+            
+            // Try to print iframe content
+            try {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
+            } catch (e) {
+                // Fallback: print current page
+                window.print();
+            }
+        }
+
+        // Visitor Counter
+        function initializeVisitorCounter() {
+            let count = localStorage.getItem('siteVisits');
+            
+            if (!count) {
+                count = Math.floor(Math.random() * 1000) + 500; // Initial random count
+            } else {
+                count = parseInt(count);
+            }
+            
+            // Increment count
+            count++;
+            localStorage.setItem('siteVisits', count);
+            
+            // Display with animation
+            animateCounter('counterNumber', count);
+        }
+
+        function animateCounter(elementId, finalNumber) {
+            const element = document.getElementById(elementId);
+            let current = 0;
+            const increment = finalNumber / 50; // Adjust speed
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= finalNumber) {
+                    element.textContent = finalNumber.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 30);
+        }
+
+        // Analytics Tracking
+        function trackPageView() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    page_title: document.title,
+                    page_location: window.location.href
+                });
+            }
+        }
+
+        function trackToolView(toolId, toolName) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'tool_view', {
+                    event_category: 'tool_usage',
+                    event_label: toolName,
+                    tool_id: toolId
+                });
+            }
+        }
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', function() {
+            const toolId = window.location.hash.substring(1) || 'hse-calculators';
+            loadTool(toolId);
+        });
+
+        // Load tool from URL hash on page load
+        window.addEventListener('load', function() {
+            const toolId = window.location.hash.substring(1);
+            if (toolId && tools[toolId]) {
+                document.querySelectorAll('.tool-nav-item').forEach(i => {
+                    i.classList.remove('active');
+                    if (i.getAttribute('data-tool') === toolId) {
+                        i.classList.add('active');
+                    }
+                });
+                loadTool(toolId);
+            }
         });
     </script>
 </body>
